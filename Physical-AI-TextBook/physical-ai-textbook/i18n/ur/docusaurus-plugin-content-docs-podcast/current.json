@@ -1,0 +1,14 @@
+{
+  "version.label": {
+    "message": "اگلا",
+    "description": "The label for version current"
+  },
+  "sidebar.podcastSidebar.category.Episodes": {
+    "message": "اقساط",
+    "description": "The label for category 'Episodes' in sidebar 'podcastSidebar'"
+  },
+  "sidebar.podcastSidebar.doc.All Episodes": {
+    "message": "تمام اقساط",
+    "description": "The label for the doc item 'All Episodes' in sidebar 'podcastSidebar', linking to the doc index"
+  }
+}

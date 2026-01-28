@@ -1,0 +1,750 @@
+/**
+ * Physical AI Textbook - Custom CSS
+ * Theme colors inspired by robotics and AI aesthetics
+ */
+
+/* Import Noto Nastaliq Urdu font for Urdu text */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap");
+
+:root {
+    /* Primary: Electric Blue - represents AI and technology */
+    --ifm-color-primary: #0066cc;
+    --ifm-color-primary-dark: #005cb8;
+    --ifm-color-primary-darker: #0057ad;
+    --ifm-color-primary-darkest: #00478f;
+    --ifm-color-primary-light: #0070e0;
+    --ifm-color-primary-lighter: #0075eb;
+    --ifm-color-primary-lightest: #1a85ff;
+
+    /* Secondary colors */
+    --ifm-color-secondary: #76b900; /* NVIDIA Green */
+    --physical-ai-accent: #ff6b35; /* Accent orange */
+    --physical-ai-robot: #8b5cf6; /* Purple for robotics */
+
+    --ifm-code-font-size: 95%;
+    --docusaurus-highlighted-code-line-bg: rgba(0, 102, 204, 0.1);
+
+    /* Typography */
+    --ifm-font-family-base: "Inter", system-ui, -apple-system, sans-serif;
+    --ifm-heading-font-family: "Inter", system-ui, -apple-system, sans-serif;
+
+    /* Spacing */
+    --ifm-spacing-horizontal: 1.5rem;
+}
+
+[data-theme="dark"] {
+    --ifm-color-primary: #4da6ff;
+    --ifm-color-primary-dark: #2e97ff;
+    --ifm-color-primary-darker: #1f8fff;
+    --ifm-color-primary-darkest: #006fe0;
+    --ifm-color-primary-light: #6cb5ff;
+    --ifm-color-primary-lighter: #7bbdff;
+    --ifm-color-primary-lightest: #a3d3ff;
+
+    --ifm-color-secondary: #9ae600;
+    --physical-ai-accent: #ff8c5a;
+    --physical-ai-robot: #a78bfa;
+
+    --docusaurus-highlighted-code-line-bg: rgba(77, 166, 255, 0.15);
+    --ifm-background-color: #0d1117;
+    --ifm-background-surface-color: #161b22;
+}
+
+/* Hero section styling */
+.hero {
+    background: linear-gradient(135deg, #0d1117 0%, #1a1f2e 50%, #0d1117 100%);
+    padding: 4rem 0;
+}
+
+.hero__title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(
+        90deg,
+        var(--ifm-color-primary),
+        var(--physical-ai-robot)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero__subtitle {
+    font-size: 1.5rem;
+    color: var(--ifm-color-emphasis-700);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Feature cards */
+.feature-card {
+    background: var(--ifm-background-surface-color);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid var(--ifm-color-emphasis-200);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Podcast player styling */
+.podcast-player {
+    background: linear-gradient(
+        135deg,
+        var(--ifm-background-surface-color),
+        var(--ifm-background-color)
+    );
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid var(--ifm-color-emphasis-200);
+    margin: 2rem 0;
+}
+
+.podcast-player__controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.podcast-player__play-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--ifm-color-primary);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.podcast-player__play-btn:hover {
+    transform: scale(1.1);
+    background: var(--ifm-color-primary-dark);
+}
+
+.podcast-player__progress {
+    flex: 1;
+    height: 8px;
+    background: var(--ifm-color-emphasis-200);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.podcast-player__progress-bar {
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        var(--ifm-color-primary),
+        var(--physical-ai-robot)
+    );
+    border-radius: 4px;
+    transition: width 0.1s linear;
+}
+
+/* Chapter podcast link */
+.chapter-podcast-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(
+        135deg,
+        var(--ifm-color-primary),
+        var(--physical-ai-robot)
+    );
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    margin: 1rem 0;
+}
+
+.chapter-podcast-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 102, 204, 0.3);
+    color: white;
+    text-decoration: none;
+}
+
+/* Podcast card */
+.podcast-card {
+    background: var(--ifm-background-surface-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid var(--ifm-color-emphasis-200);
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.podcast-card:hover {
+    border-color: var(--ifm-color-primary);
+}
+
+.podcast-card__thumbnail {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    background: linear-gradient(
+        135deg,
+        var(--ifm-color-primary),
+        var(--physical-ai-robot)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+}
+
+.podcast-card__content {
+    flex: 1;
+}
+
+.podcast-card__title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.podcast-card__duration {
+    color: var(--ifm-color-emphasis-600);
+    font-size: 0.875rem;
+}
+
+/* Code block enhancements */
+.prism-code {
+    border-radius: 8px;
+}
+
+/* Learning objectives box */
+.learning-objectives {
+    background: linear-gradient(
+        135deg,
+        rgba(0, 102, 204, 0.1),
+        rgba(139, 92, 246, 0.1)
+    );
+    border-left: 4px solid var(--ifm-color-primary);
+    border-radius: 0 8px 8px 0;
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.learning-objectives h4 {
+    color: var(--ifm-color-primary);
+    margin-top: 0;
+}
+
+/* Admonition customizations */
+.admonition {
+    border-radius: 8px;
+}
+
+/* Table styling */
+table {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th {
+    background: var(--ifm-color-emphasis-100);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero__title {
+        font-size: 2.5rem;
+    }
+
+    .hero__subtitle {
+        font-size: 1.2rem;
+    }
+
+    .podcast-card {
+        flex-direction: column;
+    }
+
+    .podcast-card__thumbnail {
+        width: 100%;
+        height: 120px;
+    }
+}
+
+/* Animation for page transitions */
+.main-wrapper {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Navbar enhancements */
+.navbar {
+    backdrop-filter: blur(10px);
+    background: rgba(var(--ifm-background-color-rgb), 0.8);
+}
+
+[data-theme="dark"] .navbar {
+    background: rgba(13, 17, 23, 0.8);
+}
+
+/* Episode number badge */
+.episode-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--ifm-color-primary);
+    color: white;
+    font-weight: 700;
+    font-size: 0.875rem;
+    margin-right: 0.5rem;
+}
+
+/* Show notes styling */
+.show-notes {
+    background: var(--ifm-background-surface-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.show-notes h4 {
+    margin-top: 0;
+    color: var(--ifm-color-primary);
+}
+
+/* Transcript styling */
+.transcript {
+    background: var(--ifm-background-surface-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.transcript p {
+    line-height: 1.8;
+}
+
+/* Speed control buttons */
+.speed-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.speed-btn {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--ifm-color-emphasis-300);
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.75rem;
+    transition: all 0.2s ease;
+}
+
+.speed-btn:hover,
+.speed-btn.active {
+    background: var(--ifm-color-primary);
+    color: white;
+    border-color: var(--ifm-color-primary);
+}
+
+/* Volume slider */
+.volume-slider {
+    width: 80px;
+    height: 4px;
+    -webkit-appearance: none;
+    background: var(--ifm-color-emphasis-200);
+    border-radius: 2px;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--ifm-color-primary);
+    cursor: pointer;
+}
+
+/* ==========================================
+   Urdu Nastaleeq Font Styling
+   ========================================== */
+
+/* Apply Nastaleeq font to all Urdu pages */
+html[lang="ur-PK"],
+html[lang="ur-PK"] body {
+    font-family:
+        "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting",
+        serif;
+    line-height: 2.2;
+}
+
+/* Urdu headings */
+html[lang="ur-PK"] h1,
+html[lang="ur-PK"] h2,
+html[lang="ur-PK"] h3,
+html[lang="ur-PK"] h4,
+html[lang="ur-PK"] h5,
+html[lang="ur-PK"] h6 {
+    font-family:
+        "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting",
+        serif;
+    font-weight: 700;
+    line-height: 2;
+}
+
+/* Urdu paragraphs and text */
+html[lang="ur-PK"] p,
+html[lang="ur-PK"] li,
+html[lang="ur-PK"] td,
+html[lang="ur-PK"] th,
+html[lang="ur-PK"] span,
+html[lang="ur-PK"] a,
+html[lang="ur-PK"] label {
+    font-family:
+        "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting",
+        serif;
+    line-height: 2.2;
+}
+
+/* Navbar for Urdu */
+html[lang="ur-PK"] .navbar__title,
+html[lang="ur-PK"] .navbar__link {
+    font-family:
+        "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting",
+        serif;
+    font-size: 1.1rem;
+}
+
+/* Footer for Urdu */
+html[lang="ur-PK"] .footer__title,
+html[lang="ur-PK"] .footer__link-item,
+html[lang="ur-PK"] .footer__copyright {
+    font-family:
+        "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting",
+        serif;
+}
+
+/* Sidebar for Urdu */
+html[lang="ur-PK"] .menu__link,
+html[lang="ur-PK"] .menu__caret {
+    font-family:
+        "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting",
+        serif;
+    font-size: 1rem;
+    line-height: 2;
+}
+
+/* Buttons for Urdu */
+html[lang="ur-PK"] .button {
+    font-family:
+        "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting",
+        serif;
+    font-size: 1.1rem;
+    padding: 0.75rem 1.5rem;
+}
+
+/* Hero section for Urdu */
+html[lang="ur-PK"] .hero__title {
+    font-family:
+        "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting",
+        serif;
+    font-size: 3rem;
+    line-height: 1.8;
+}
+
+html[lang="ur-PK"] .hero__subtitle {
+    font-family:
+        "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting",
+        serif;
+    font-size: 1.3rem;
+    line-height: 2;
+}
+
+/* Breadcrumbs for Urdu */
+html[lang="ur-PK"] .breadcrumbs__link {
+    font-family:
+        "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting",
+        serif;
+}
+
+/* Table of contents for Urdu */
+html[lang="ur-PK"] .table-of-contents__link {
+    font-family:
+        "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting",
+        serif;
+    line-height: 2;
+}
+
+/* Admonitions for Urdu */
+html[lang="ur-PK"] .admonition-heading,
+html[lang="ur-PK"] .admonition-content {
+    font-family:
+        "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting",
+        serif;
+}
+
+/* Podcast player for Urdu */
+html[lang="ur-PK"] .podcastPlayer_UrV0,
+html[lang="ur-PK"] [class*="podcastPlayer"] {
+    font-family:
+        "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", "Urdu Typesetting",
+        serif;
+}
+
+/* Keep code blocks in monospace font even for Urdu */
+html[lang="ur-PK"] code,
+html[lang="ur-PK"] pre {
+    font-family: var(--ifm-font-family-monospace);
+    direction: ltr;
+    text-align: left;
+}
+
+/* Increase font size slightly for better Nastaleeq readability */
+html[lang="ur-PK"] .markdown {
+    font-size: 1.1rem;
+}
+
+/* Adjust line height for better Urdu text rendering */
+html[lang="ur-PK"] .theme-doc-markdown {
+    line-height: 2.4;
+}
+
+/* ==========================================
+   Accessibility Enhancements
+   ========================================== */
+
+/* Focus states for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid var(--ifm-color-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Skip to main content link */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ifm-color-primary);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0 0 8px 8px;
+    z-index: 9999;
+    font-weight: 600;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+    color: white;
+}
+
+/* High contrast focus for interactive elements */
+.button:focus-visible {
+    box-shadow:
+        0 0 0 3px var(--ifm-background-color),
+        0 0 0 6px var(--ifm-color-primary);
+}
+
+/* Ensure links are distinguishable (not just by color) */
+.markdown a:not(.button) {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.markdown a:not(.button):hover {
+    text-decoration-thickness: 2px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .main-wrapper {
+        animation: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --ifm-color-primary: #0000ee;
+        --ifm-color-emphasis-200: #000;
+        --ifm-color-emphasis-600: #000;
+    }
+
+    [data-theme="dark"] {
+        --ifm-color-primary: #7df9ff;
+        --ifm-color-emphasis-200: #fff;
+        --ifm-color-emphasis-600: #fff;
+    }
+
+    .feature-card,
+    .podcast-card,
+    .quickLinkCard {
+        border-width: 2px;
+    }
+}
+
+/* Ensure sufficient color contrast for text */
+.hero__subtitle,
+.podcast-card__duration,
+.quickLinkDesc {
+    color: var(--ifm-color-emphasis-700);
+}
+
+[data-theme="dark"] .hero__subtitle,
+[data-theme="dark"] .podcast-card__duration,
+[data-theme="dark"] .quickLinkDesc {
+    color: var(--ifm-color-emphasis-500);
+}
+
+/* Screen reader only content */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Ensure interactive elements have minimum touch target size */
+.button,
+.navbar__link,
+.menu__link,
+.pagination-nav__link {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Form accessibility */
+input:invalid,
+select:invalid,
+textarea:invalid {
+    border-color: #dc3545;
+}
+
+input:invalid:focus,
+select:invalid:focus,
+textarea:invalid:focus {
+    outline-color: #dc3545;
+}
+
+/* ==========================================
+   Performance Optimizations
+   ========================================== */
+
+/* GPU acceleration for animations */
+.feature-card,
+.podcast-card,
+.quickLinkCard,
+.chapter-podcast-link,
+.podcast-player__play-btn {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Optimize font loading */
+@font-face {
+    font-display: swap;
+}
+
+/* Lazy load images below the fold */
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+img[loading="lazy"].loaded {
+    opacity: 1;
+}
+
+/* Content-visibility for long pages */
+.markdown > *:nth-child(n + 10) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
+}
+
+/* ==========================================
+   Print Styles
+   ========================================== */
+
+@media print {
+    .navbar,
+    .footer,
+    .pagination-nav,
+    .theme-doc-sidebar-container,
+    .announcementBar_node_modules,
+    [class*="announcementBar"] {
+        display: none !important;
+    }
+
+    .main-wrapper {
+        animation: none;
+    }
+
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666;
+    }
+
+    .markdown {
+        max-width: 100%;
+    }
+
+    pre,
+    code {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+}

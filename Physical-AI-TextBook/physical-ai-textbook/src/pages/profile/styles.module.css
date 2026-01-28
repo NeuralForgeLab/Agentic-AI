@@ -1,0 +1,395 @@
+/* Profile Page Styles */
+
+.profileContainer {
+  min-height: calc(100vh - 60px);
+  padding: 2rem;
+  background: linear-gradient(135deg, #0d1117 0%, #1a1f2e 50%, #0d1117 100%);
+}
+
+.profileCard {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--ifm-background-surface-color, #161b22);
+  border-radius: 16px;
+  border: 1px solid var(--ifm-color-emphasis-200, #30363d);
+  overflow: hidden;
+}
+
+.loadingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--ifm-color-emphasis-200, #30363d);
+  border-top-color: var(--ifm-color-primary, #0066cc);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* User Section */
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(139, 92, 246, 0.1));
+  border-bottom: 1px solid var(--ifm-color-emphasis-200, #30363d);
+}
+
+.avatarLarge {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--ifm-color-primary, #0066cc);
+  flex-shrink: 0;
+}
+
+.avatarLarge img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatarFallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--ifm-color-primary, #0066cc), var(--physical-ai-robot, #8b5cf6));
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.userDetails {
+  flex: 1;
+}
+
+.userName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+  color: var(--ifm-font-color-base, #fff);
+}
+
+.userEmail {
+  color: var(--ifm-color-emphasis-600, #8b949e);
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+
+.signOutButton {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--ifm-color-emphasis-300, #30363d);
+  background: transparent;
+  color: var(--ifm-font-color-base, #fff);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.signOutButton:hover {
+  background: var(--ifm-color-emphasis-100, #21262d);
+  border-color: var(--ifm-color-emphasis-400, #484f58);
+}
+
+/* Progress Overview */
+.progressOverview {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200, #30363d);
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: var(--ifm-font-color-base, #fff);
+}
+
+.progressBar {
+  height: 12px;
+  background: var(--ifm-color-emphasis-200, #30363d);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--ifm-color-primary, #0066cc), var(--physical-ai-robot, #8b5cf6));
+  border-radius: 6px;
+  transition: width 0.5s ease;
+}
+
+.progressStats {
+  display: flex;
+  gap: 2rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.statNumber {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ifm-color-primary, #0066cc);
+}
+
+.statLabel {
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-600, #8b949e);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200, #30363d);
+}
+
+.tab {
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  background: transparent;
+  color: var(--ifm-color-emphasis-600, #8b949e);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.tab:hover {
+  color: var(--ifm-font-color-base, #fff);
+  background: var(--ifm-color-emphasis-100, #21262d);
+}
+
+.tabActive {
+  color: var(--ifm-color-primary, #0066cc);
+  border-bottom: 2px solid var(--ifm-color-primary, #0066cc);
+}
+
+.badge {
+  background: var(--ifm-color-primary, #0066cc);
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 10px;
+}
+
+/* Tab Content */
+.tabContent {
+  padding: 1.5rem 2rem;
+}
+
+/* Chapter List */
+.chapterList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.chapterItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: var(--ifm-color-emphasis-100, #21262d);
+  transition: background 0.2s ease;
+}
+
+.chapterItem:hover {
+  background: var(--ifm-color-emphasis-200, #30363d);
+}
+
+.chapterCompleted {
+  background: rgba(63, 185, 80, 0.1);
+}
+
+.chapterCompleted:hover {
+  background: rgba(63, 185, 80, 0.15);
+}
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 2px solid var(--ifm-color-emphasis-400, #484f58);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.chapterCompleted .checkbox {
+  background: #3fb950;
+  border-color: #3fb950;
+  color: white;
+}
+
+.checkbox:hover {
+  border-color: var(--ifm-color-primary, #0066cc);
+}
+
+.chapterLink {
+  flex: 1;
+  text-decoration: none;
+  color: var(--ifm-font-color-base, #fff);
+}
+
+.chapterLink:hover {
+  color: var(--ifm-color-primary, #0066cc);
+}
+
+.chapterTitle {
+  font-weight: 500;
+}
+
+.chapterCompleted .chapterTitle {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+/* Bookmark List */
+.bookmarkList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bookmarkItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: var(--ifm-color-emphasis-100, #21262d);
+  transition: background 0.2s ease;
+}
+
+.bookmarkItem:hover {
+  background: var(--ifm-color-emphasis-200, #30363d);
+}
+
+.bookmarkLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--ifm-font-color-base, #fff);
+  flex: 1;
+}
+
+.bookmarkLink:hover {
+  color: var(--ifm-color-primary, #0066cc);
+}
+
+.bookmarkIcon {
+  color: var(--ifm-color-primary, #0066cc);
+}
+
+.removeButton {
+  padding: 0.5rem;
+  border: none;
+  background: transparent;
+  color: var(--ifm-color-emphasis-500, #6e7681);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.removeButton:hover {
+  background: rgba(248, 81, 73, 0.1);
+  color: #f85149;
+}
+
+/* Empty State */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  color: var(--ifm-color-emphasis-500, #6e7681);
+}
+
+.emptyIcon {
+  opacity: 0.5;
+  margin-bottom: 1rem;
+}
+
+/* RTL Support for Urdu */
+html[lang="ur-PK"] .userSection {
+  flex-direction: row-reverse;
+}
+
+html[lang="ur-PK"] .userDetails {
+  text-align: right;
+}
+
+html[lang="ur-PK"] .chapterItem {
+  flex-direction: row-reverse;
+}
+
+html[lang="ur-PK"] .bookmarkItem {
+  flex-direction: row-reverse;
+}
+
+html[lang="ur-PK"] .bookmarkLink {
+  flex-direction: row-reverse;
+}
+
+html[lang="ur-PK"] .userName,
+html[lang="ur-PK"] .sectionTitle,
+html[lang="ur-PK"] .tab,
+html[lang="ur-PK"] .chapterTitle {
+  font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .profileContainer {
+    padding: 1rem;
+  }
+
+  .userSection {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .userDetails {
+    text-align: center;
+  }
+
+  .progressStats {
+    justify-content: center;
+  }
+
+  html[lang="ur-PK"] .userSection {
+    flex-direction: column;
+  }
+}
