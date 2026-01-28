@@ -15,8 +15,8 @@ const config: Config = {
     v4: true,
   },
 
-  url: "https://mansoor-siddiqui.github.io",
-  baseUrl: "/physical-ai-textbook/",
+  url: "https://neuralforgelab.github.io",
+  baseUrl: "/Agentic-AI/",
 
   // SEO metadata
   headTags: [
@@ -138,8 +138,8 @@ const config: Config = {
     },
   ],
 
-  organizationName: "Mansoor-Siddiqui",
-  projectName: "physical-ai-textbook",
+  organizationName: "NeuralForgeLab",
+  projectName: "Agentic-AI",
   deploymentBranch: "gh-pages",
   trailingSlash: false,
 
@@ -190,7 +190,7 @@ const config: Config = {
         docs: {
           sidebarPath: "./sidebars.ts",
           editUrl:
-            "https://github.com/Mansoor-Siddiqui/physical-ai-textbook/tree/master/physical-ai-textbook/",
+            "https://github.com/NeuralForgeLab/Agentic-AI/tree/master/Agentic-AI/",
           showLastUpdateTime: false,
           showLastUpdateAuthor: false,
         },
@@ -211,7 +211,7 @@ const config: Config = {
         routeBasePath: "podcast",
         sidebarPath: "./sidebarsPodcast.ts",
         editUrl:
-          "https://github.com/Mansoor-Siddiqui/physical-ai-textbook/tree/master/physical-ai-textbook/",
+          "https://github.com/NeuralForgeLab/Agentic-AI/tree/master/Agentic-AI/",
         showLastUpdateTime: false,
         showLastUpdateAuthor: false,
       },
@@ -295,7 +295,7 @@ const config: Config = {
           position: "right",
         },
         {
-          href: "https://github.com/Mansoor-Siddiqui/physical-ai-textbook",
+          href: "https://github.com/NeuralForgeLab/physical-ai-textbook",
           label: "GitHub",
           position: "right",
         },
@@ -343,7 +343,7 @@ const config: Config = {
           items: [
             {
               label: "GitHub Discussions",
-              href: "https://github.com/Mansoor-Siddiqui/physical-ai-textbook/discussions",
+              href: "https://github.com/NeuralForgeLab/Agentic-AI/discussions",
             },
             {
               label: "ROS Discourse",
@@ -360,7 +360,7 @@ const config: Config = {
           items: [
             {
               label: "GitHub",
-              href: "https://github.com/Mansoor-Siddiqui/physical-ai-textbook",
+              href: "https://github.com/NeuralForgeLab/physical-ai-textbook",
             },
             {
               label: "ROS2 Documentation",
