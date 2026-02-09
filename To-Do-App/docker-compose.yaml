@@ -1,0 +1,57 @@
+# Task: T4-003 - Docker Compose for local testing
+# From: specs/phase4-kubernetes/spec.md §3.3
+
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend/Dockerfile
+    container_name: todo-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - BETTER_AUTH_URL=http://frontend:3000
+      - BETTER_AUTH_SECRET=${BETTER_AUTH_SECRET}
+      - JWT_ALGORITHM=EdDSA
+      - CORS_ORIGINS=["http://localhost:3000","http://frontend:3000"]
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GEMINI_MODEL=gemini-2.5-flash
+      - GEMINI_MAX_TOKENS=1024
+      - GEMINI_TEMPERATURE=0.7
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - todo-network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend/Dockerfile
+      args:
+        - NEXT_PUBLIC_API_URL=http://localhost:8000
+        - NEXT_PUBLIC_BETTER_AUTH_URL=http://localhost:3000
+    container_name: todo-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - BETTER_AUTH_SECRET=${BETTER_AUTH_SECRET}
+      - BETTER_AUTH_URL=http://localhost:3000
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+      - NEXT_PUBLIC_BETTER_AUTH_URL=http://localhost:3000
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - todo-network
+
+networks:
+  todo-network:
+    driver: bridge

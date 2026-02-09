@@ -1,0 +1,101 @@
+# Task: T4-008 - Backend Deployment
+# From: specs/phase4-kubernetes/spec.md §4.4
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-backend
+  namespace: todo-app
+  labels:
+    app: todo
+    component: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo
+      component: backend
+  template:
+    metadata:
+      labels:
+        app: todo
+        component: backend
+    spec:
+      containers:
+        - name: backend
+          image: todo-backend:latest
+          imagePullPolicy: Never  # Use local image
+          ports:
+            - containerPort: 8000
+              protocol: TCP
+          env:
+            # From Secrets
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: todo-secrets
+                  key: DATABASE_URL
+            - name: BETTER_AUTH_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: todo-secrets
+                  key: BETTER_AUTH_SECRET
+            - name: GEMINI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: todo-secrets
+                  key: GEMINI_API_KEY
+            # From ConfigMap
+            - name: CORS_ORIGINS
+              valueFrom:
+                configMapKeyRef:
+                  name: todo-config
+                  key: CORS_ORIGINS
+            - name: BETTER_AUTH_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: todo-config
+                  key: BETTER_AUTH_URL
+            - name: GEMINI_MODEL
+              valueFrom:
+                configMapKeyRef:
+                  name: todo-config
+                  key: GEMINI_MODEL
+            - name: GEMINI_MAX_TOKENS
+              valueFrom:
+                configMapKeyRef:
+                  name: todo-config
+                  key: GEMINI_MAX_TOKENS
+            - name: GEMINI_TEMPERATURE
+              valueFrom:
+                configMapKeyRef:
+                  name: todo-config
+                  key: GEMINI_TEMPERATURE
+            - name: JWT_ALGORITHM
+              valueFrom:
+                configMapKeyRef:
+                  name: todo-config
+                  key: JWT_ALGORITHM
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3

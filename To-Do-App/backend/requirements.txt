@@ -1,0 +1,16 @@
+# Task: T2-001 - Backend dependencies
+# From: specs/phase2-web/tasks.md
+
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+sqlmodel>=0.0.14
+psycopg2-binary>=2.9.9
+PyJWT[crypto]>=2.8.0
+python-dotenv>=1.0.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+httpx>=0.27.0
+
+# Task: T3-001 - Gemini AI SDK
+# From: specs/phase3-ai-chatbot/tasks.md
+google-generativeai>=0.3.2

@@ -1,0 +1,25 @@
+# Standard text files
+*.md text
+*.mdx text
+*.ts text
+*.tsx text
+*.js text
+*.jsx text
+*.json text
+*.css text
+*.scss text
+*.yml text
+*.yaml text
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text
+*.pdf binary
+*.mp3 binary
+*.wav binary
+*.ogg binary
+*.m4a binary

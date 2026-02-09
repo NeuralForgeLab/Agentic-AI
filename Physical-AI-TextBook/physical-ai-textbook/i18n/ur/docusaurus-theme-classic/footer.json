@@ -1,0 +1,66 @@
+{
+  "link.title.Learn": {
+    "message": "سیکھیں",
+    "description": "The title of the footer links column with title=Learn in the footer"
+  },
+  "link.title.Podcast": {
+    "message": "پوڈکاسٹ",
+    "description": "The title of the footer links column with title=Podcast in the footer"
+  },
+  "link.title.Community": {
+    "message": "کمیونٹی",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.title.More": {
+    "message": "مزید",
+    "description": "The title of the footer links column with title=More in the footer"
+  },
+  "link.item.label.Introduction": {
+    "message": "تعارف",
+    "description": "The label of footer link with label=Introduction linking to /docs/intro"
+  },
+  "link.item.label.ROS2 Fundamentals": {
+    "message": "ROS2 بنیادی باتیں",
+    "description": "The label of footer link with label=ROS2 Fundamentals linking to /docs/ros2"
+  },
+  "link.item.label.Labs": {
+    "message": "لیبز",
+    "description": "The label of footer link with label=Labs linking to /docs/labs/lab01-ros2-hello"
+  },
+  "link.item.label.All Episodes": {
+    "message": "تمام اقساط",
+    "description": "The label of footer link with label=All Episodes linking to /podcast"
+  },
+  "link.item.label.Latest Episode": {
+    "message": "تازہ ترین قسط",
+    "description": "The label of footer link with label=Latest Episode linking to /podcast/episodes/ep01-physical-ai"
+  },
+  "link.item.label.GitHub Discussions": {
+    "message": "گٹ ہب مباحثے",
+    "description": "The label of footer link with label=GitHub Discussions linking to https://github.com/your-username/physical-ai-textbook/discussions"
+  },
+  "link.item.label.ROS Discourse": {
+    "message": "ROS ڈسکورس",
+    "description": "The label of footer link with label=ROS Discourse linking to https://discourse.ros.org/"
+  },
+  "link.item.label.NVIDIA Developer Forums": {
+    "message": "NVIDIA ڈویلپر فورمز",
+    "description": "The label of footer link with label=NVIDIA Developer Forums linking to https://forums.developer.nvidia.com/c/agx-autonomous-machines/isaac/67"
+  },
+  "link.item.label.GitHub": {
+    "message": "گٹ ہب",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/your-username/physical-ai-textbook"
+  },
+  "link.item.label.ROS2 Documentation": {
+    "message": "ROS2 دستاویزات",
+    "description": "The label of footer link with label=ROS2 Documentation linking to https://docs.ros.org/en/humble/"
+  },
+  "link.item.label.NVIDIA Isaac Sim": {
+    "message": "NVIDIA Isaac Sim",
+    "description": "The label of footer link with label=NVIDIA Isaac Sim linking to https://developer.nvidia.com/isaac-sim"
+  },
+  "copyright": {
+    "message": "کاپی رائٹ © 2026 فزیکل AI کتاب۔ Docusaurus کے ساتھ بنایا گیا۔",
+    "description": "The footer copyright"
+  }
+}

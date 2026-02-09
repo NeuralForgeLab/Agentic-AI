@@ -1,0 +1,76 @@
+{
+  "name": "physical-ai-textbook",
+  "version": "1.0.0",
+  "description": "Physical AI Textbook - Humanoid Robotics with ROS2, Gazebo, NVIDIA Isaac & VLA Models",
+  "private": true,
+  "scripts": {
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "serve": "docusaurus serve",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "typecheck": "tsc",
+    "generate:script": "node scripts/generate-script.js",
+    "generate:audio": "node scripts/generate-audio.js",
+    "generate:all-scripts": "node scripts/batch-generate.js",
+    "generate:all": "npm run generate:all-scripts"
+  },
+  "dependencies": {
+    "@docusaurus/core": "3.9.2",
+    "@docusaurus/plugin-content-docs": "3.9.2",
+    "@docusaurus/preset-classic": "3.9.2",
+    "@mdx-js/react": "^3.0.0",
+    "@supabase/supabase-js": "^2.90.1",
+    "clsx": "^2.0.0",
+    "dotenv": "^17.2.3",
+    "firebase": "^12.7.0",
+    "prism-react-renderer": "^2.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@docusaurus/module-type-aliases": "3.9.2",
+    "@docusaurus/tsconfig": "3.9.2",
+    "@docusaurus/types": "3.9.2",
+    "gray-matter": "^4.0.3",
+    "openai": "^4.0.0",
+    "typescript": "~5.6.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 3 chrome version",
+      "last 3 firefox version",
+      "last 5 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=20.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/physical-ai-textbook.git"
+  },
+  "author": "Physical AI Textbook Contributors",
+  "license": "MIT",
+  "keywords": [
+    "robotics",
+    "ros2",
+    "physical-ai",
+    "humanoid",
+    "isaac-sim",
+    "gazebo",
+    "vla",
+    "machine-learning",
+    "textbook",
+    "podcast"
+  ]
+}

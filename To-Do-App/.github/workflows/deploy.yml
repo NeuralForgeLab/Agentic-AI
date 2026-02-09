@@ -1,0 +1,159 @@
+# Task: T5-003 - CD Pipeline
+# From: specs/phase5-cloud/spec.md §4
+
+name: CD - Deploy to GCP Cloud Run
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  REGION: ${{ secrets.GCP_REGION }}
+  BACKEND_SERVICE: todo-backend
+  FRONTEND_SERVICE: todo-frontend
+  REPOSITORY: todo-repo
+
+jobs:
+  deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Google Auth
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+
+      - name: Configure Docker for Artifact Registry
+        run: |
+          gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push backend
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: docker/backend/Dockerfile.cloud
+          push: true
+          tags: |
+            ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.BACKEND_SERVICE }}:${{ github.sha }}
+            ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.BACKEND_SERVICE }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Deploy backend to Cloud Run
+        id: deploy-backend
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: ${{ env.BACKEND_SERVICE }}
+          region: ${{ env.REGION }}
+          image: ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.BACKEND_SERVICE }}:${{ github.sha }}
+          flags: |
+            --allow-unauthenticated
+            --memory=512Mi
+            --cpu=1
+            --min-instances=0
+            --max-instances=10
+            --port=8000
+          secrets: |
+            DATABASE_URL=DATABASE_URL:latest
+            BETTER_AUTH_SECRET=BETTER_AUTH_SECRET:latest
+            GEMINI_API_KEY=GEMINI_API_KEY:latest
+          env_vars: |
+            GEMINI_MODEL=gemini-2.5-flash
+            GEMINI_MAX_TOKENS=1024
+            GEMINI_TEMPERATURE=0.7
+            JWT_ALGORITHM=EdDSA
+
+      - name: Get backend URL
+        id: backend-url
+        run: |
+          BACKEND_URL="${{ steps.deploy-backend.outputs.url }}"
+          echo "url=$BACKEND_URL" >> $GITHUB_OUTPUT
+          echo "Backend deployed to: $BACKEND_URL"
+
+      - name: Build and push frontend
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: docker/frontend/Dockerfile.cloud
+          push: true
+          tags: |
+            ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.FRONTEND_SERVICE }}:${{ github.sha }}
+            ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.FRONTEND_SERVICE }}:latest
+          build-args: |
+            NEXT_PUBLIC_API_URL=${{ steps.backend-url.outputs.url }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Deploy frontend to Cloud Run
+        id: deploy-frontend
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: ${{ env.FRONTEND_SERVICE }}
+          region: ${{ env.REGION }}
+          image: ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.FRONTEND_SERVICE }}:${{ github.sha }}
+          flags: |
+            --allow-unauthenticated
+            --memory=512Mi
+            --cpu=1
+            --min-instances=0
+            --max-instances=10
+            --port=3000
+          secrets: |
+            DATABASE_URL=DATABASE_URL:latest
+            BETTER_AUTH_SECRET=BETTER_AUTH_SECRET:latest
+          env_vars: |
+            NEXT_PUBLIC_API_URL=${{ steps.backend-url.outputs.url }}
+
+      - name: Update backend CORS
+        run: |
+          FRONTEND_URL="${{ steps.deploy-frontend.outputs.url }}"
+          gcloud run services update ${{ env.BACKEND_SERVICE }} \
+            --region=${{ env.REGION }} \
+            --update-env-vars="CORS_ORIGINS=[\"$FRONTEND_URL\"],BETTER_AUTH_URL=$FRONTEND_URL"
+
+      - name: Update frontend env
+        run: |
+          FRONTEND_URL="${{ steps.deploy-frontend.outputs.url }}"
+          gcloud run services update ${{ env.FRONTEND_SERVICE }} \
+            --region=${{ env.REGION }} \
+            --update-env-vars="BETTER_AUTH_URL=$FRONTEND_URL,NEXT_PUBLIC_BETTER_AUTH_URL=$FRONTEND_URL"
+
+      - name: Deployment Summary
+        run: |
+          echo "## Deployment Successful! :rocket:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Service | URL |" >> $GITHUB_STEP_SUMMARY
+          echo "|---------|-----|" >> $GITHUB_STEP_SUMMARY
+          echo "| Frontend | ${{ steps.deploy-frontend.outputs.url }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Backend | ${{ steps.deploy-backend.outputs.url }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Commit: \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+
+      - name: Smoke test
+        run: |
+          echo "Testing backend health..."
+          curl -f ${{ steps.deploy-backend.outputs.url }}/health || exit 1
+          echo ""
+          echo "Testing frontend..."
+          curl -sf -o /dev/null ${{ steps.deploy-frontend.outputs.url }} || exit 1
+          echo "All smoke tests passed!"

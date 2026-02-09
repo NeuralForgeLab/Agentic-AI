@@ -1,0 +1,38 @@
+{
+  "sidebar.labsSidebar.category.Hands-on Labs": {
+    "message": "عملی لیبز",
+    "description": "The label for category 'Hands-on Labs' in sidebar 'labsSidebar'"
+  },
+  "version.label": {
+    "message": "اگلا",
+    "description": "The label for version current"
+  },
+  "sidebar.textbookSidebar.doc.Introduction to Physical AI": {
+    "message": "فزیکل AI کا تعارف",
+    "description": "The label for the doc item 'Introduction to Physical AI' in sidebar 'textbookSidebar', linking to the doc intro/index"
+  },
+  "sidebar.textbookSidebar.doc.ROS2 Fundamentals": {
+    "message": "ROS2 بنیادی باتیں",
+    "description": "The label for the doc item 'ROS2 Fundamentals' in sidebar 'textbookSidebar', linking to the doc ros2/index"
+  },
+  "sidebar.textbookSidebar.doc.Robot Simulation": {
+    "message": "روبوٹ سمولیشن",
+    "description": "The label for the doc item 'Robot Simulation' in sidebar 'textbookSidebar', linking to the doc simulation/index"
+  },
+  "sidebar.textbookSidebar.doc.NVIDIA Isaac Sim": {
+    "message": "NVIDIA Isaac Sim",
+    "description": "The label for the doc item 'NVIDIA Isaac Sim' in sidebar 'textbookSidebar', linking to the doc isaac-sim/index"
+  },
+  "sidebar.textbookSidebar.doc.Vision-Language-Action Models": {
+    "message": "ویژن-لینگویج-ایکشن ماڈلز",
+    "description": "The label for the doc item 'Vision-Language-Action Models' in sidebar 'textbookSidebar', linking to the doc vla-models/index"
+  },
+  "sidebar.textbookSidebar.doc.Humanoid Robotics": {
+    "message": "ہیومنائیڈ روبوٹکس",
+    "description": "The label for the doc item 'Humanoid Robotics' in sidebar 'textbookSidebar', linking to the doc humanoid/index"
+  },
+  "sidebar.textbookSidebar.doc.Resources & References": {
+    "message": "وسائل اور حوالہ جات",
+    "description": "The label for the doc item 'Resources & References' in sidebar 'textbookSidebar', linking to the doc resources/index"
+  }
+}

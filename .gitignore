@@ -1,0 +1,60 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Build outputs
+physical-ai-textbook/build/
+physical-ai-textbook/.docusaurus/
+dist/
+*.egg-info/
+
+# Environment files (contain secrets)
+.env
+.env.local
+.env.*.local
+!.env.example
+rag-backend/.env
+physical-ai-textbook/.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+nul
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Audio files (use Git LFS if needed)
+*.wav
+*.ogg
+# Allow podcast audio files
+!physical-ai-textbook/static/audio/**/*.mp3
+
+# Large model files
+*.bin
+*.pt
+*.pth
+
+# Firebase service account keys
+*serviceAccount*.json
+firebase-adminsdk*.json

@@ -1,0 +1,60 @@
+# Render Blueprint - Infrastructure as Code
+# This file defines all services for the Todo application
+# Deploy: Connect GitHub repo to Render, it auto-detects this file
+
+services:
+  # Backend - FastAPI
+  - type: web
+    name: todo-backend
+    runtime: docker
+    dockerfilePath: ./docker/backend/Dockerfile.render
+    dockerContext: .
+    region: oregon
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        sync: false  # Set manually in Render dashboard
+      - key: BETTER_AUTH_SECRET
+        sync: false
+      - key: BETTER_AUTH_URL
+        fromService:
+          type: web
+          name: todo-frontend
+          property: host
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: GEMINI_MAX_TOKENS
+        value: "1024"
+      - key: GEMINI_TEMPERATURE
+        value: "0.7"
+      - key: JWT_ALGORITHM
+        value: EdDSA
+      - key: CORS_ORIGINS
+        value: '["https://todo-frontend.onrender.com"]'
+
+  # Frontend - Next.js
+  - type: web
+    name: todo-frontend
+    runtime: docker
+    dockerfilePath: ./docker/frontend/Dockerfile.render
+    dockerContext: .
+    region: oregon
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: BETTER_AUTH_SECRET
+        sync: false
+      - key: BETTER_AUTH_URL
+        value: https://todo-frontend.onrender.com
+      - key: NEXT_PUBLIC_API_URL
+        fromService:
+          type: web
+          name: todo-backend
+          property: host
+      - key: NEXT_PUBLIC_BETTER_AUTH_URL
+        value: https://todo-frontend.onrender.com

@@ -1,6 +1,6 @@
 # Agentic AI
 
-A comprehensive collection of Agentic AI concepts, patterns, and implementations.
+A hands-on repository for building Agentic AI systems using autonomous agents, LLM orchestration, tool usage, memory, and multi-agent workflows.
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10+-blue.svg" alt="Python">

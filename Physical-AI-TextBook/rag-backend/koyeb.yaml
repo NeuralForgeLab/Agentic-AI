@@ -1,0 +1,29 @@
+name: physical-ai-rag
+type: web
+regions:
+  - fra
+instance_type: free
+ports:
+  - port: 8000
+    protocol: http
+env:
+  - key: GEMINI_API_KEY
+    value: ""
+  - key: QDRANT_URL
+    value: ""
+  - key: QDRANT_API_KEY
+    value: ""
+  - key: DATABASE_URL
+    value: ""
+  - key: CORS_ORIGINS
+    value: "https://mansoor-siddiqui.github.io,http://localhost:3000"
+build:
+  dockerfile:
+    dockerfile: Dockerfile
+routes:
+  - path: /
+    port: 8000
+health_checks:
+  - port: 8000
+    path: /health
+    protocol: http
