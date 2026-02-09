@@ -1,0 +1,10 @@
+# Task: T4-005 - Kubernetes Namespace
+# From: specs/phase4-kubernetes/spec.md §4.1
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: todo-app
+  labels:
+    app: todo
+    environment: development
