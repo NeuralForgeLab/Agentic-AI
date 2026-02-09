@@ -69,3 +69,8 @@ title: Travel Agent
 sdk: docker
 app_port: 8000
 ```
+
+## Authors
+
+**Mansoor Ahmed Siddiqui** (Data Scientist)
+**Zeeshan Zubair** (Data Scientist)

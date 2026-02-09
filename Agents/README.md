@@ -101,3 +101,8 @@ Client → HTTP/JSON-RPC → MCP Server → Tool → Response
 The `projects/` folder contains complete applications combining multiple concepts:
 
 - **[Travel Chatbot](./projects/travel-chatbot)** - Full travel assistant using Gemini
+
+## Authors
+
+**Mansoor Ahmed Siddiqui** (Data Scientist)
+**Zeeshan Zubair** (Data Scientist)
