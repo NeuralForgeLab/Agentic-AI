@@ -74,3 +74,5 @@ app_port: 8000
 
 **Mansoor Ahmed Siddiqui** (Data Scientist)
 **Zeeshan Zubair** (Data Scientist)
+
+PGD Data Science with AI(Batch 8) - NED University, Karachi, Pakistan

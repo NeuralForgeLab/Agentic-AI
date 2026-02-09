@@ -145,7 +145,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 **Mansoor Ahmed Siddiqui** (Data Scientist)
 **Zeeshan Zubair** (Data Scientist)
 
-PGD Data Science with AI - NED University
+PGD Data Science with AI(Batch 8) - NED University, Karachi, Pakistan
 
 ---
 

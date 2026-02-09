@@ -106,3 +106,5 @@ The `projects/` folder contains complete applications combining multiple concept
 
 **Mansoor Ahmed Siddiqui** (Data Scientist)
 **Zeeshan Zubair** (Data Scientist)
+
+PGD Data Science with AI(Batch 8) - NED University, Karachi, Pakistan
